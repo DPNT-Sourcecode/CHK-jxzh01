@@ -58,5 +58,3 @@ class TestCheckout():
 
     def test_three_n_one_m_free(self):
         assert checkout_solution.checkout("NMNN") == 120
-
-
