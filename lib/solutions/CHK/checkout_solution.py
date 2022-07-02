@@ -101,7 +101,7 @@ def checkout(skus):
     # check priority offers
     apply_priority_offers(cart)
 
-    # check bundle offers
+    # check bundle offers (requires sorting prices first)
     apply_bundle_offers(cart)
 
     # calculate price
@@ -142,3 +142,4 @@ def apply_priority_offers(cart):
 def apply_bundle_offers(cart):
     for bundle, bundle_offer in buy_any_x_for_price_y_offers.items():
         bundle = sorted(bundle)
+
