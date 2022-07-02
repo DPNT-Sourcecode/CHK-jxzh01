@@ -74,5 +74,6 @@ def apply_priority_offers(cart):
     for item, special_offers in buy_x_get_n_times_y_free_offers.items():
         if item in cart:
             for quantity, freebie in special_offers.items():
-                if cart[item] >= quantity and cart[freebie] > 0:
+                if cart[item] >= quantity and freebie in cart:
                     cart[freebie] -= 1
+
