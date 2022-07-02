@@ -74,7 +74,7 @@ buy_x_get_n_times_y_free_offers = {
 }
 
 buy_any_x_for_price_y_offers = {
-    ["Z", "T", "S", "Y", "X"]: (3, 45)
+    "ZTSYX": (3, 45)
 }
 
 
@@ -140,11 +140,23 @@ def apply_priority_offers(cart):
                 cart[freebie] = max(cart[freebie] - cart[item] // quantity, 0)
 
 def apply_bundle_offers(cart):
-    for bundle, bundle_offer in buy_any_x_for_price_y_offers.items():
-        req =
+    total_price = 0
+    for bundle, bundle_data in buy_any_x_for_price_y_offers.items():
+        required_item_count = bundle_data[0]
+
         for item in bundle:
+            if required_item_count == 0:
+                total_price += bundle_data[1]
+                break
+
             if item not in cart:
                 continue
+
+            items_applicable = max(cart[item], required_item_count)
+            cart[item] -= items_applicable
+            required_item_count -= items_applicable
+
+        # if bundle incomplete restore cart
 
 
 
