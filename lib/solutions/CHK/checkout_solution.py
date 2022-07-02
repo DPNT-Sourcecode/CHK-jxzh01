@@ -22,13 +22,16 @@ def checkout(skus):
     skus = skus.strip()
     prods = skus.split(",")
 
-    res = 0
+    cart = {}
+    sum = 0
     for prod in prods:
         if prod not in prices:
             return -1
 
         #check if applicable for offer
-        if prod.lower() 
+        if prod in offers:
+            if offers[prod]
+
 
 
 
