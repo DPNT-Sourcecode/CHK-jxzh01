@@ -20,17 +20,25 @@ offers = {
 # skus = unicode string
 def checkout(skus):
     skus = skus.strip()
-    prods = skus.split(",")
+    prods = list(skus)
 
     cart = {}
     sum = 0
     for prod in prods:
+        if not prod.isalpha():
+            continue
+            
         if prod not in prices:
             return -1
 
-        #check if applicable for offer
-        if prod in offers:
-            if offers[prod]
+        # accumulate cart
+        if prod in cart.keys():
+            cart[prod] += 1
+        else:
+            cart[prod] = 1
+
+
+
 
 
 
