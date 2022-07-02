@@ -1,10 +1,10 @@
 
 prices = {
-        "A": 50,
-        "B": 30,
-        "C": 20,
-        "D": 15
-    }
+    "A": 50,
+    "B": 30,
+    "C": 20,
+    "D": 15
+}
 
 offers = {
     "A": {
@@ -42,7 +42,8 @@ def checkout(skus):
         # check if offer applicable
         if product in offers:
             while quantity >= offers[product]:
-                cart_sum += offers[]
+                cart_sum += offers[product]
+
 
 
 
