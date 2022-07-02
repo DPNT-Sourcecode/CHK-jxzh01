@@ -10,4 +10,3 @@ class TestSum():
 
     def test_sum_highest(self):
         assert sum_solution.compute(100, 100) == 200
-
