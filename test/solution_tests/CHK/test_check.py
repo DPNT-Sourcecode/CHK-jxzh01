@@ -38,4 +38,3 @@ class TestCheckout():
 
     def test_special_deal_twice(self):
         assert checkout_solution.checkout("BEBEEE") == 160
-
