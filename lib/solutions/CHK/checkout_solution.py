@@ -106,9 +106,9 @@ def checkout(skus):
 
     # check bundle offers
     while True:
-        prev_sum = cart_sum
-        cart_sum += apply_bundle_offers(cart)
-        if cart_sum == prev_sum:
+        bundle_price = apply_bundle_offers(cart)
+        cart_sum += bundle_price
+        if bundle_price == 0:
             break
 
     for product, quantity in cart.items():
@@ -169,8 +169,8 @@ def apply_bundle_offers(cart):
             item_counts[item] += items_applicable
             required_item_count -= items_applicable
 
-
     return total_price
+
 
 
 
