@@ -6,7 +6,7 @@ class TestCheckout():
         assert checkout_solution.checkout("") == 0
 
     def test_invalid(self):
-        assert checkout_solution.checkout("M") == -1
+        assert checkout_solution.checkout("---") == -1
 
     def test_deal(self):
         assert checkout_solution.checkout("AABA") == 160
@@ -48,3 +48,14 @@ class TestCheckout():
 
     def test_nine_f_three_f_free(self):
         assert checkout_solution.checkout("FFFFFFFFF") == 60
+
+    # 4th part
+    def test_three_u_one_u_free(self):
+        assert checkout_solution.checkout("UUUU") == 120
+
+    def test_three_r_one_q_free(self):
+        assert checkout_solution.checkout("RRQR") == 150
+
+    def test_three_n_one_m_free(self):
+        assert checkout_solution.checkout("NMNN") == 120
+
