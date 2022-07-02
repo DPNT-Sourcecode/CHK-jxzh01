@@ -98,14 +98,15 @@ def checkout(skus):
         else:
             cart[prod] = 1
 
+    # calculate price
+    cart_sum = 0
+
     # check priority offers
     apply_priority_offers(cart)
 
     # check bundle offers
-    apply_bundle_offers(cart)
+    cart_sum += apply_bundle_offers(cart)
 
-    # calculate price
-    cart_sum = 0
     for product, quantity in cart.items():
         # check if offer applicable
         if product in offers:

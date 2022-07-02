@@ -70,4 +70,4 @@ class TestCheckout():
         assert checkout_solution.checkout("SSS") == 45
 
     def test_bundle_applies_best_deal(self):
-        assert checkout_solution.checkout("SSZZZ") == 95
+        assert checkout_solution.checkout("SSZZZ") == 85
