@@ -31,7 +31,8 @@ class TestCheckout():
         assert checkout_solution.checkout("EEB") == 80
 
     def test_get_two_b_after(self):
-        assert checkout_solution.checkout("B E E") == 80
+        assert checkout_solution.checkout("BEE") == 80
+
 
 
 
