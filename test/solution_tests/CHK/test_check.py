@@ -26,7 +26,7 @@ class TestCheckout():
     def test_get_best_deal_second_best(self):
         assert checkout_solution.get_best_deal("A", 4) == 3
 
-# 2nd part
+    # 2nd part
     def test_get_two_b_before(self):
         assert checkout_solution.checkout("EEB") == 80
 
@@ -39,12 +39,12 @@ class TestCheckout():
     def test_special_deal_twice(self):
         assert checkout_solution.checkout("BEBEEE") == 160
 
-# 3rd part
+    # 3rd part
     def test_two_f_one_f_free(self):
         assert checkout_solution.checkout("FFF") == 20
 
     def test_two_f_one_f_free_when_five_in_total(self):
         assert checkout_solution.checkout("FFFFF") == 40
 
-    def test_six_f_two_f_free(self):
-        assert checkout_solution.checkout("FFFFFF") == 40
+    def test_nine_f_three_f_free(self):
+        assert checkout_solution.checkout("FFFFFFFFF") == 60
