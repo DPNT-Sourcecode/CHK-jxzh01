@@ -74,9 +74,7 @@ buy_x_get_n_times_y_free_offers = {
 }
 
 buy_any_x_for_price_y_offers = {
-    ["S", "T", "X", "Y", "Z"]: {
-        3: 45
-    }
+    ["Z", "T", "S", "Y", "X"]: (3, 45)
 }
 
 
@@ -103,8 +101,7 @@ def checkout(skus):
     # check priority offers
     apply_priority_offers(cart)
 
-    # check bundle offers (requires sorting prices first)
-    prices = sorted(prices.items(), key=lambda x: x[1])
+    # check bundle offers
     apply_bundle_offers(cart)
 
     # calculate price
@@ -144,6 +141,11 @@ def apply_priority_offers(cart):
 
 def apply_bundle_offers(cart):
     for bundle, bundle_offer in buy_any_x_for_price_y_offers.items():
-        bundle = sorted(bundle)
+        req =
+        for item in bundle:
+            if item not in cart:
+                continue
+
+
 
 
