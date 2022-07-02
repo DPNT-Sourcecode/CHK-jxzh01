@@ -142,18 +142,25 @@ def apply_priority_offers(cart):
 def apply_bundle_offers(cart):
     total_price = 0
     for bundle, bundle_data in buy_any_x_for_price_y_offers.items():
+        item_counts = {p: 0 for p in bundle}
         required_item_count = bundle_data[0]
 
         for item in bundle:
+            # if bundle is complete, update cart and total price
             if required_item_count == 0:
                 total_price += bundle_data[1]
+                for i, c in item_counts.items():
+                    if c > 0:
+                        cart[i] -= c
                 break
 
             if item not in cart:
                 continue
 
+            # deduce the maximum amount of items available
             items_applicable = max(cart[item], required_item_count)
-            cart[item] -= items_applicable
+            item_counts[item] += items_applicable
             required_item_count -= items_applicable
 
-        # if bundle incomplete restore cart
+    return total_price
+
