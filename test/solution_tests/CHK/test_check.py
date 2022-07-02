@@ -58,3 +58,16 @@ class TestCheckout():
 
     def test_three_n_one_m_free(self):
         assert checkout_solution.checkout("NMNN") == 120
+
+    # 5th part
+    def test_bundle_deal(self):
+        assert checkout_solution.checkout("SSS") == 45
+
+    def test_bundle_deal_twice(self):
+        assert checkout_solution.checkout("SSSSYX") == 90
+
+    def test_bundle_deal_applies_correctly_when_duplicate_items(self):
+        assert checkout_solution.checkout("SSS") == 45
+
+    def test_bundle_applies_best_deal(self):
+        assert checkout_solution.checkout("SSZZZ") == 95

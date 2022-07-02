@@ -9,7 +9,7 @@ prices = {
     "H": 10,
     "I": 35,
     "J": 60,
-    "K": 80,
+    "K": 70,
     "L": 90,
     "M": 15,
     "N": 40,
@@ -17,14 +17,14 @@ prices = {
     "P": 50,
     "Q": 30,
     "R": 50,
-    "S": 30,
+    "S": 20,
     "T": 20,
     "U": 40,
     "V": 50,
     "W": 20,
-    "X": 90,
-    "Y": 10,
-    "Z": 50
+    "X": 17,
+    "Y": 20,
+    "Z": 21
 }
 
 offers = {
@@ -40,7 +40,7 @@ offers = {
         10: 80
     },
     "K": {
-        2: 150
+        2: 120
     },
     "P": {
         5: 200
@@ -73,6 +73,12 @@ buy_x_get_n_times_y_free_offers = {
     }
 }
 
+buy_any_x_for_price_y_offers = {
+    ["S", "T", "X", "Y", "Z"]: {
+        3: 45
+    }
+}
+
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -94,6 +100,9 @@ def checkout(skus):
 
     # check priority offers
     apply_priority_offers(cart)
+
+    # check bundle offers
+    apply_bundle_offers(cart)
 
     # calculate price
     cart_sum = 0
@@ -129,3 +138,6 @@ def apply_priority_offers(cart):
         for quantity, freebie in special_offers.items():
             if cart[item] >= quantity and freebie in cart:
                 cart[freebie] = max(cart[freebie] - cart[item] // quantity, 0)
+
+def apply_bundle_offers(cart):
+    
