@@ -76,6 +76,7 @@ def apply_priority_offers(cart):
             continue
 
         for quantity, freebie in special_offers.items():
-            while cart[item] >= quantity and freebie in cart:
-                cart[freebie] -= 1
+            if cart[item] >= quantity and freebie in cart:
+                cart[freebie] = max(cart[freebie] - cart[item] // quantity, 0)
+
 
