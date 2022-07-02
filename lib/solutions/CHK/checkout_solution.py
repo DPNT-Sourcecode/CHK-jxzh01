@@ -105,7 +105,11 @@ def checkout(skus):
     apply_priority_offers(cart)
 
     # check bundle offers
-    cart_sum += apply_bundle_offers(cart)
+    while True:
+        prev_sum = cart_sum
+        cart_sum += apply_bundle_offers(cart)
+        if cart_sum == prev_sum:
+            break
 
     for product, quantity in cart.items():
         # check if offer applicable
@@ -167,6 +171,7 @@ def apply_bundle_offers(cart):
 
 
     return total_price
+
 
 
 
