@@ -105,11 +105,7 @@ def checkout(skus):
     apply_priority_offers(cart)
 
     # check bundle offers
-    while True:
-        bundle_price = apply_bundle_offers(cart)
-        cart_sum += bundle_price
-        if bundle_price is 0:
-            break
+    cart_sum += apply_bundle_offers(cart)
 
     for product, quantity in cart.items():
         # check if offer applicable
@@ -146,8 +142,9 @@ def apply_priority_offers(cart):
 
 
 def apply_bundle_offers(cart):
+    total_price = 0
+
     for bundle, bundle_data in buy_any_x_for_price_y_offers.items():
-        total_price = 0
         item_counts = {p: 0 for p in bundle}
         required_item_count = bundle_data[0]
 
@@ -158,7 +155,7 @@ def apply_bundle_offers(cart):
                     if c > 0:
                         cart[i] -= c
                 total_price += bundle_data[1]
-                return total_price
+                break
 
             if item not in cart:
                 continue
@@ -168,10 +165,4 @@ def apply_bundle_offers(cart):
             item_counts[item] += items_applicable
             required_item_count -= items_applicable
 
-    return 0
-
-
-
-
-
-
+    return total_price
