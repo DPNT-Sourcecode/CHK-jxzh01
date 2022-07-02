@@ -2,15 +2,23 @@ prices = {
     "A": 50,
     "B": 30,
     "C": 20,
-    "D": 15
+    "D": 15,
+    "E": 40
 }
 
 offers = {
     "A": {
-        3: 130
+        3: 130,
+        5: 200
     },
     "B": {
         2: 45
+    }
+}
+
+buy_x_get_n_times_y_free_offers = {
+    "E": {
+        2: "B"
     }
 }
 
@@ -31,6 +39,9 @@ def checkout(skus):
             cart[prod] += 1
         else:
             cart[prod] = 1
+
+    # check priority offers
+    apply_priority_offers(cart)
 
     # calculate price
     cart_sum = 0
@@ -56,3 +67,10 @@ def get_best_deal(product, quantity):
     # return max applicable offer
     return max((q for q, p in offers[product].items() if quantity >= min(offers[product].keys())),
                default=1)
+
+def apply_priority_offers(cart):
+    for item, special_offers in buy_x_get_n_times_y_free_offers.items():
+        for quantity, freebie in special_offers.items():
+            if cart[item] >= quantity and cart[freebie] > 0:
+                cart[freebie] -= 1
+

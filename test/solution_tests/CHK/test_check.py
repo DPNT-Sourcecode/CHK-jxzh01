@@ -22,3 +22,11 @@ class TestCheckout():
 
     def test_no_deal(self):
         assert checkout_solution.checkout("A B C D") == 115
+
+# 2nd part
+    def test_get_two_b_before(self):
+        assert checkout_solution.checkout("E E B") == 80
+
+    def test_get_two_b_after(self):
+        assert checkout_solution.checkout("B E E") == 80
+
