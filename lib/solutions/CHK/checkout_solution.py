@@ -83,6 +83,8 @@ buy_any_x_for_price_y_offers = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    global prices
+
     skus = skus.strip()
     prods = list(skus)
     cart = {}
@@ -102,6 +104,7 @@ def checkout(skus):
     apply_priority_offers(cart)
 
     # check bundle offers (requires sorting prices first)
+    prices = sorted(prices.items(), key=lambda x: x[1])
     apply_bundle_offers(cart)
 
     # calculate price
@@ -142,4 +145,5 @@ def apply_priority_offers(cart):
 def apply_bundle_offers(cart):
     for bundle, bundle_offer in buy_any_x_for_price_y_offers.items():
         bundle = sorted(bundle)
+
 
