@@ -18,9 +18,11 @@ offers = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    # clean up input
     skus = skus.strip()
     prods = list(skus)
 
+    # accumulate cart
     cart = {}
     for prod in prods:
         # validate
@@ -29,7 +31,6 @@ def checkout(skus):
         if prod not in prices:
             return -1
 
-        # accumulate cart
         if prod in cart.keys():
             cart[prod] += 1
         else:
@@ -52,12 +53,13 @@ def checkout(skus):
             cart_sum += prices[product] * cart[product]
             cart[product] = 0
 
-
     return cart_sum
+
 
 def get_best_deal(product, quantity):
     # return max applicable offer
     return max((q for q, p in offers[product].items() if quantity >= min(offers[product].keys())),
                default=1)
+
 
 
