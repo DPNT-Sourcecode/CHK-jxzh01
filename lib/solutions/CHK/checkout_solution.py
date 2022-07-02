@@ -153,13 +153,6 @@ def apply_bundle_offers(cart):
         required_item_count = bundle_data[0]
 
         for item in bundle:
-            # if bundle is complete, update cart and total price
-            if required_item_count == 0:
-                for i, c in item_counts.items():
-                    if c > 0:
-                        cart[i] -= c
-                return bundle_data[1]
-
             if item not in cart:
                 continue
 
@@ -168,6 +161,15 @@ def apply_bundle_offers(cart):
             item_counts[item] += items_applicable
             required_item_count -= items_applicable
 
-    return 0
+        # if bundle is complete, update cart and total price
+        if required_item_count == 0:
+            for i, c in item_counts.items():
+                if c > 0:
+                    cart[i] -= c
+            total_price += bundle_data[1]
+            break
+
+    return total_price
+
 
 
