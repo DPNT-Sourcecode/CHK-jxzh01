@@ -1,4 +1,3 @@
-
 prices = {
     "A": 50,
     "B": 30,
@@ -41,10 +40,15 @@ def checkout(skus):
     for product, quantity in cart.items():
         # check if offer applicable
         if product in offers:
-            while quantity >= offers[product]:
-                cart_sum += offers[product]
+            while quantity != 0:
+                cart_sum += get_best_price(product, quantity)
+                cart[product] -=
 
 
+def get_best_price(product, quantity):
+    # return max applicable offer
+    return max((p for q, p in offers[product].items() if quantity >= min(offers[product].keys())),
+               default=prices[product])
 
 
 
