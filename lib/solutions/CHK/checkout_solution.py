@@ -48,6 +48,10 @@ def checkout(skus):
                 else:
                     cart_sum += offers[product][quantity]
                 cart[product] -= quantity
+        else:
+            cart_sum += prices[product] * cart[product]
+            cart[product] = 0
+
 
     return cart_sum
 
@@ -55,4 +59,5 @@ def get_best_deal(product, quantity):
     # return max applicable offer
     return max((q for q, p in offers[product].items() if quantity >= min(offers[product].keys())),
                default=1)
+
 
