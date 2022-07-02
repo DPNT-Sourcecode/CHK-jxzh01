@@ -8,25 +8,23 @@ class TestCheckout():
     def test_invalid(self):
         assert checkout_solution.checkout("M") == -1
 
-    def test_with_seperator(self):
-        assert checkout_solution.checkout("A,B,  D") == 95
-
     def test_deal(self):
-        assert checkout_solution.checkout("A A B A") == 160
+        assert checkout_solution.checkout("AABA") == 160
 
     def test_deal_with_leftover_item(self):
-        assert checkout_solution.checkout("A A A A") == 180
+        assert checkout_solution.checkout("AAAA") == 180
 
     def test_deal_multiple(self):
-        assert checkout_solution.checkout("A A A B B") == 175
+        assert checkout_solution.checkout("AAABB") == 175
 
     def test_no_deal(self):
-        assert checkout_solution.checkout("A B C D") == 115
+        assert checkout_solution.checkout("ABCD") == 115
 
 # 2nd part
     def test_get_two_b_before(self):
-        assert checkout_solution.checkout("E E B") == 80
+        assert checkout_solution.checkout("EEB") == 80
 
     def test_get_two_b_after(self):
         assert checkout_solution.checkout("B E E") == 80
+
 
