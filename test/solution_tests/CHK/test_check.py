@@ -7,4 +7,3 @@ class TestCheckout():
 
     def test_get_best_deal_1(self):
         assert checkout_solution.checkout("A B C D") == 115
-
