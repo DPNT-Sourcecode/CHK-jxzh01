@@ -20,10 +20,10 @@ class TestCheckout():
     def test_no_deal(self):
         assert checkout_solution.checkout("ABCD") == 115
 
-    def test_get_best_deal_best(self):
+    def test_get_best_deal_gets_best(self):
         assert checkout_solution.get_best_deal("A", 10) == 5
 
-    def test_get_best_deal_second_best(self):
+    def test_get_best_deal_gets_second_best(self):
         assert checkout_solution.get_best_deal("A", 4) == 3
 
     # 2nd part
@@ -58,4 +58,5 @@ class TestCheckout():
 
     def test_three_n_one_m_free(self):
         assert checkout_solution.checkout("NMNN") == 120
+
 
