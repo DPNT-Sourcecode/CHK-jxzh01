@@ -3,7 +3,8 @@ prices = {
     "B": 30,
     "C": 20,
     "D": 15,
-    "E": 40
+    "E": 40,
+    "F": 10
 }
 
 offers = {
@@ -16,9 +17,13 @@ offers = {
     }
 }
 
+# should be sorted by the value of the offer if offers not mutually exclusive
 buy_x_get_n_times_y_free_offers = {
     "E": {
         2: "B"
+    },
+    "F": {
+        3: "F"
     }
 }
 

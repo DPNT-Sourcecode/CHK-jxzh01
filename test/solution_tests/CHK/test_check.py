@@ -38,3 +38,13 @@ class TestCheckout():
 
     def test_special_deal_twice(self):
         assert checkout_solution.checkout("BEBEEE") == 160
+
+# 3rd part
+    def test_two_f_one_f_free(self):
+        assert checkout_solution.checkout("FFF") == 20
+
+    def test_two_f_one_f_free_when_five_in_total(self):
+        assert checkout_solution.checkout("FFFFF") == 40
+
+    def test_six_f_two_f_free(self):
+        assert checkout_solution.checkout("FFFFFF") == 40
