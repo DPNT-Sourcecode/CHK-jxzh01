@@ -140,28 +140,37 @@ def apply_priority_offers(cart):
             if cart[item] >= quantity and freebie in cart:
                 cart[freebie] = max(cart[freebie] - cart[item] // quantity, 0)
 
+
 def apply_bundle_offers(cart):
     total_price = 0
-    for bundle, bundle_data in buy_any_x_for_price_y_offers.items():
-        item_counts = {p: 0 for p in bundle}
-        required_item_count = bundle_data[0]
+    price_changed = False
 
-        for item in bundle:
-            # if bundle is complete, update cart and total price
-            if required_item_count == 0:
-                total_price += bundle_data[1]
-                for i, c in item_counts.items():
-                    if c > 0:
-                        cart[i] -= c
-                break
+    while not price_changed:
+        prev_total_price = total_price
 
-            if item not in cart:
-                continue
+        for bundle, bundle_data in buy_any_x_for_price_y_offers.items():
+            item_counts = {p: 0 for p in bundle}
+            required_item_count = bundle_data[0]
 
-            # deduce the maximum amount of items available
-            items_applicable = max(cart[item], required_item_count)
-            item_counts[item] += items_applicable
-            required_item_count -= items_applicable
+            for item in bundle:
+                # if bundle is complete, update cart and total price
+                if required_item_count == 0:
+                    total_price += bundle_data[1]
+                    for i, c in item_counts.items():
+                        if c > 0:
+                            cart[i] -= c
+                    break
+
+                if item not in cart:
+                    continue
+
+                # deduce the maximum amount of items available
+                items_applicable = max(cart[item], required_item_count)
+                item_counts[item] += items_applicable
+                required_item_count -= items_applicable
+
+        price_changed = total_price == prev_total_price
 
     return total_price
+
 
