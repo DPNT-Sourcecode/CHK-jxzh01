@@ -9,6 +9,7 @@ prices = {
 offers = {
     "A": {
         3: 130,
+        5: 200
     },
     "B": {
         2: 45
@@ -75,6 +76,7 @@ def apply_priority_offers(cart):
             for quantity, freebie in special_offers.items():
                 if cart[item] >= quantity and cart[freebie] > 0:
                     cart[freebie] -= 1
+
 
 
 
