@@ -105,7 +105,11 @@ def checkout(skus):
     apply_priority_offers(cart)
 
     # check bundle offers
-    cart_sum += apply_bundle_offers(cart)
+    while True:
+        last_cart_sum = cart_sum
+        cart_sum += apply_bundle_offers(cart)
+        if cart_sum == last_cart_sum:
+            break
 
     for product, quantity in cart.items():
         # check if offer applicable
@@ -161,8 +165,9 @@ def apply_bundle_offers(cart):
                 continue
 
             # deduce the maximum amount of items available
-            items_applicable = max(cart[item], required_item_count)
+            items_applicable = min(cart[item], required_item_count)
             item_counts[item] += items_applicable
             required_item_count -= items_applicable
 
     return total_price
+
