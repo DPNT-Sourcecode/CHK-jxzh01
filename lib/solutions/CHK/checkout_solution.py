@@ -26,6 +26,7 @@ buy_x_get_n_times_y_free_offers = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    skus = skus.strip()
     prods = list(skus)
     cart = {}
     # validate input and accumulate cart
@@ -75,6 +76,7 @@ def apply_priority_offers(cart):
             for quantity, freebie in special_offers.items():
                 if cart[item] >= quantity and cart[freebie] > 0:
                     cart[freebie] -= 1
+
 
 
 
