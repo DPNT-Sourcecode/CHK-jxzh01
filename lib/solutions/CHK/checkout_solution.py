@@ -23,11 +23,10 @@ def checkout(skus):
     prods = list(skus)
 
     cart = {}
-    sum = 0
     for prod in prods:
+        # validate
         if not prod.isalpha():
             continue
-            
         if prod not in prices:
             return -1
 
@@ -37,6 +36,13 @@ def checkout(skus):
         else:
             cart[prod] = 1
 
+    # calculate price
+    cart_sum = 0
+    for product, quantity in cart.items():
+        # check if offer applicable
+        if product in offers:
+            while quantity >= offers[product]:
+                cart_sum += offers[]
 
 
 
