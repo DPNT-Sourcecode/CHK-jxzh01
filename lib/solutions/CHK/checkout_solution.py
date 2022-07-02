@@ -41,7 +41,7 @@ def checkout(skus):
             cart[prod] = 1
 
     # check priority offers
-    apply_priority_offers(**cart)
+    #apply_priority_offers(cart)
 
     # calculate price
     cart_sum = 0
@@ -71,10 +71,11 @@ def get_best_deal(product, quantity):
 
 def apply_priority_offers(cart):
     for item, special_offers in buy_x_get_n_times_y_free_offers.items():
-        if item in cart.keys():
+        if item in cart:
             for quantity, freebie in special_offers.items():
                 if cart[item] >= quantity and cart[freebie] > 0:
                     cart[freebie] -= 1
+
 
 
 
