@@ -140,4 +140,5 @@ def apply_priority_offers(cart):
                 cart[freebie] = max(cart[freebie] - cart[item] // quantity, 0)
 
 def apply_bundle_offers(cart):
-    
+    for bundle, bundle_offer in buy_any_x_for_price_y_offers.items():
+        bundle = sorted(bundle)
